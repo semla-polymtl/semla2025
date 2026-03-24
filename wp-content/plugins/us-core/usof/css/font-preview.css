@@ -1,0 +1,34 @@
+
+/* TYPE Font Preview */
+.usof-form-row.with_preview_text .usof-form-row-title {
+	display: none;
+	}
+.usof-text-preview-wrapper {
+	font-family: var(--body-font-family, inherit);
+	}
+	.usof-text-preview {
+		display: flex;
+		align-items: center;
+		height: 80px;
+		line-height: 1.4;
+		padding: 0 25px;
+		overflow: hidden;
+		margin-bottom: -2px !important;
+		border: 2px dotted rgba(0,0,0,0.15);
+		}
+	.usof-form-row.type_font .usof-text-preview {
+		font-size: 26px !important;
+		}
+	.usof-form-row[data-name="body"] .usof-text-preview {
+		height: 140px;
+		}
+	.usof-form-row[data-name^="h"] .usof-text-preview {
+		white-space: nowrap;
+		}
+	.usof-font .usof-checkbox-list {
+		margin-top: 4px !important;
+		}
+		.usof-font .usof-checkbox {
+			margin: 0 !important;
+			width: 25%;
+			}

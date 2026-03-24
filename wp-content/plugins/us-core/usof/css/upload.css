@@ -1,0 +1,188 @@
+
+/* TYPE Upload */
+.usof-upload {
+	padding: 2px;
+	border-radius: 2px;
+	background: var(--usof-color-gray-2);
+	}
+	.usof-upload-preview-file {
+		position: relative;
+		background: var(--usof-color-white);
+		}
+		.usof-upload-preview-file img {
+			display: block;
+			max-height: 150px;
+			max-width: 100%;
+			}
+		.usof-upload-preview-file .ui-icon_close {
+			position: absolute;
+			top: 2px;
+			right: 2px;
+			visibility: hidden;
+			text-align: center;
+			line-height: 2.2;
+			height: 2.2em;
+			width: 2.2em;
+			border-radius: 2px;
+			cursor: pointer;
+			background: var(--usof-color-white);
+			}
+		.usof-upload-preview-file:hover .ui-icon_close {
+			visibility: visible !important;
+			}
+		.usof-upload-preview-file .ui-icon_close:hover {
+			color: var(--usof-color-red-30);
+			}
+	.usof-upload > .ui-icon_add {
+		line-height: 75px;
+		height: 75px;
+		margin: 0 auto;
+		border-radius: inherit;
+		}
+	.usof-upload > .ui-icon_add:hover {
+		background: var(--usof-color-gray-5);
+		}
+	.usof-upload.is_single .usof-upload-preview:not(.hidden) ~ .ui-icon_add {
+		display: none;
+		}
+	.usof-upload > button.for_select_dynamic_value {
+		position: absolute;
+		top: 2px;
+		right: 2px;
+		line-height: 2.4;
+		width: 2.2em;
+		cursor: pointer;
+		border-radius: 2px;
+		border: none;
+		background: none;
+		}
+	.usof-upload > button.for_select_dynamic_value:hover {
+		background: var(--usof-color-white);
+		}
+
+/* Preview Image */
+.usof-upload.preview_image.is_single .usof-upload-preview {
+	display: flex;
+	}
+.usof-upload.preview_image.is_multiple .usof-upload-preview {
+	display: grid;
+	grid-template-columns: repeat( auto-fill, minmax(72px, 1fr) );
+	gap: 2px;
+	}
+.usof-upload.preview_image.is_multiple > button.for_select_dynamic_value {
+	top: auto;
+	bottom: 46px;
+	}
+	.usof-upload.preview_image.is_single .usof-upload-preview-file {
+		margin: 0 auto;
+		max-width: 150px;
+		min-width: 75px;
+		min-height: 75px;
+		cursor: pointer;
+		}
+	.usof-upload.preview_image.is_multiple .usof-upload-preview-file {
+		aspect-ratio: 1;
+		cursor: move;
+		}
+	.usof-upload.preview_image .usof-upload-preview-file:empty {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		}
+		.usof-upload.preview_image .usof-upload-preview-file:empty:after {
+			content: '\f03e';
+			font-family: fontawesome;
+			font-size: 2em;
+			color: var(--usof-color-gray-10);
+			}
+
+/* Preview Text */
+.usof-upload.preview_text .usof-upload-preview-file {
+	display: block;
+	width: 100%;
+	line-height: 2.2em;
+	padding-left: .6em;
+	padding-right: 3em;
+	margin-bottom: 2px;
+	}
+	.usof-upload.preview_text .usof-upload-preview-file:before {
+		content: '\f15b';
+		font-family: fontawesome;
+		font-weight: 900;
+		vertical-align: top;
+		margin-right: 5px;
+		opacity: 0.5;
+		}
+	.usof-upload.preview_text .usof-upload-preview-file .ui-icon_close {
+		top: 0;
+		right: 0;
+		}
+
+/* Preview Dynamic value */
+.usof-upload.preview_dynamic_value > .ui-icon_add {
+	display: none;
+	}
+.usof-upload.preview_dynamic_value .usof-upload-preview {
+	margin-right: calc(2.2em + 2px);
+	}
+	.usof-upload.preview_dynamic_value .usof-upload-preview-file {
+		display: flex;
+		line-height: 2.4;
+		min-height: 2.4em;
+		padding-left: 10px;
+		border-radius: 2px;
+		background: var(--usof-color-white);
+		cursor: pointer;
+		}
+		.usof-upload.preview_dynamic_value .usof-upload-preview-file > span {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			display: block;
+			}
+		.usof-upload.preview_dynamic_value .usof-upload-preview-file .ui-icon_close {
+			position: relative;
+			top: 0;
+			right: 0;
+			flex-shrink: 0;
+			line-height: inherit;
+			height: auto;
+			margin-left: auto;
+			}
+
+/* TYPE Backup */
+.usof-backup-status {
+	padding: 8px 0;
+	}
+	.usof-backup-status span {
+		font-weight: bold;
+		}
+	.usof-backup .usof-button.type_backup,
+	.usof-backup .usof-button.type_restore {
+		margin: 0 10px 10px 0;
+		}
+
+/* TYPE Transfer */
+.usof-transfer .usof-button.type_import {
+	margin: 10px 10px 10px 0;
+	}
+
+/* drag & drop */
+.usof-dragshadow {
+	position: relative;
+	}
+	.usof-dragshadow:before {
+		content: '';
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		right: 2px;
+		bottom: 2px;
+		border: 2px dashed;
+		}
+.usof-upload-preview-file.detached {
+	opacity: 0.5;
+	}
+	.us-bld-editor.dragstarted .ui-icon_delete {
+		display: none;
+		}

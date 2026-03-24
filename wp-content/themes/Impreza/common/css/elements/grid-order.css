@@ -1,0 +1,52 @@
+
+/* Grid Order
+---------------------------------------------------------------------------*/
+.w-order {
+	display: flex;
+	align-items: center;
+	gap: .6em;
+	}
+	.w-order-select {
+		position: relative;
+		min-width: inherit;
+		width: inherit;
+		}
+		.w-order-select > select {
+			-webkit-appearance: none;
+			padding-inline-end: calc( var(--inputs-padding, .6em) * 2 + .8em );
+			}
+		.w-order-select:after {
+			content: '';
+			position: absolute;
+			top: calc( var(--inputs-height, 2em) / 2 + var(--inputs-border-width, 1px) );
+			inset-inline-end: 0;
+			font-size: var( --inputs-font-size );
+			margin: -.2em calc( var(--inputs-padding, .6em) + var(--inputs-border-width, 1px) );
+			color: var( --inputs-text-color );
+			pointer-events: none;
+			border: .4em solid;
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-bottom-color: transparent;
+			border-radius: 2px;
+			}
+
+.w-order.width_full {
+	display: block;
+	width: 100%;
+	}
+	.w-order.width_full > label {
+		display: block;
+		font-weight: bold;
+		}
+
+/* Responsive
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+.w-order {
+	width: 100%;
+	}
+.w-order-select {
+	flex-grow: 1;
+	}
+}

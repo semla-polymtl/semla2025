@@ -1,0 +1,25 @@
+/* 
+ * Text
+ */
+
+/* Text */
+.w-text {
+	padding: 0;
+	}
+	.w-text.has_text_color a {
+		color: inherit;
+		}
+	.w-text i {
+		display: inline-block;
+		vertical-align: top;
+		line-height: inherit;
+		}
+	.w-text:not(.no_text).icon_atleft i {
+		margin-inline-end: .4em;
+		}
+	.w-text:not(.no_text).icon_atright i {
+		margin-inline-start: .4em;
+		}
+	.w-text-value:empty {
+		display: none;
+		}

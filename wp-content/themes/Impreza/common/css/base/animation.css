@@ -1,0 +1,177 @@
+/*
+ * Animation
+ */
+
+[class*="us_animate_"] {
+	opacity: 0;
+	animation-duration: 0.6s;
+	animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+	animation-fill-mode: both;
+	}
+[class*="us_animate_"]:not(.start) {
+	animation: none !important;
+	}
+.disable_effects [class*="us_animate_"] {
+	opacity: 1;
+	animation: none !important;
+	}
+.off_autostart {
+	visibility: hidden;
+	}
+
+/* Fade */
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.us_animate_fade {
+	animation-name: fade;
+	}
+
+/* FadeOut */
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+/* Appear From Center */
+@keyframes afc {
+	from {
+		opacity: 0;
+		transform: scale(0.1);
+		}
+	to {
+		opacity: 1;
+		transform: scale(1);
+		}
+	}
+.us_animate_afc {
+	animation-name: afc;
+	}
+
+/* Appear From Left */
+@keyframes afl {
+	from {
+		opacity: 0;
+		transform: translateX(-5rem);
+		}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+		}
+	}
+.us_animate_afl {
+	animation-name: afl;
+	}
+
+/* Appear From Right */
+@keyframes afr {
+	from {
+		opacity: 0;
+		transform: translateX(5rem);
+		}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+		}
+	}
+.us_animate_afr {
+	animation-name: afr;
+	}
+
+/* Appear From Top */
+@keyframes aft {
+	from {
+		opacity: 0;
+		transform: translateY(-5rem);
+		}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		}
+	}
+.us_animate_aft {
+	animation-name: aft;
+	}
+
+/* Appear From Bottom */
+@keyframes afb {
+	from {
+		opacity: 0;
+		transform: translateY(5rem);
+		}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		}
+	}
+.us_animate_afb.start {
+	animation-name: afb;
+	}
+
+/* Width Stretch */
+@keyframes wfc {
+	from {
+		opacity: 0;
+		transform: scaleX(0.01);
+		}
+	to {
+		opacity: 1;
+		transform: scaleX(1);
+		}
+	}
+.us_animate_wfc.start {
+	animation-name: wfc;
+	}
+
+/* Height Stretch */
+@keyframes hfc {
+	from {
+		opacity: 0;
+		transform: scaleY(0.01);
+		}
+	to {
+		opacity: 1;
+		transform: scaleY(1);
+		}
+	}
+.us_animate_hfc {
+	animation-name: hfc;
+	transform-origin: 0 0;
+	}
+
+/* Bounce */
+@keyframes bounce {
+	0% {
+		opacity: 0;
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+	20% {
+		transform: scale3d(1.1, 1.1, 1.1);
+	}
+	40% {
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+	60% {
+		opacity: 1;
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+	80% {
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+	to {
+		opacity: 1;
+		transform: scale3d(1, 1, 1);
+	}
+}
+.us_animate_bounce {
+	animation-name: bounce;
+	}

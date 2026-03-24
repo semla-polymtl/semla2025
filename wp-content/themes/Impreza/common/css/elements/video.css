@@ -1,0 +1,125 @@
+/*
+ * Video
+ */
+
+.w-video:not(.confirm_load) {
+	background: #111;
+	}
+	.w-video-h {
+		position: relative;
+		height: 0;
+		overflow: hidden;
+		padding-bottom: 56.25%;
+		}
+		.w-video-h iframe,
+		.w-video-h object,
+		.w-video-h embed,
+		.w-video-h video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			}
+		.w-video-h video {
+			object-fit: cover;
+			}
+.w-video.align_center {
+	margin: 0 auto;
+	}
+.w-video.align_left {
+	margin-right: auto;
+	}
+.w-video.align_right {
+	margin-left: auto;
+	}
+	.w-video.ratio_21x9 .w-video-h {
+		padding-bottom: 42.1875%;
+		}
+	.w-video.ratio_3x2 .w-video-h {
+		padding-bottom: 66.667%;
+		}
+	.w-video.ratio_4x3 .w-video-h {
+		padding-bottom: 75%;
+		}
+	.w-video.ratio_1x1 .w-video-h {
+		padding-bottom: 100%;
+		}
+	.w-video.ratio_9x16 .w-video-h {
+		padding-bottom: 177.7778%;
+		}
+	.w-video.ratio_initial .w-video-h {
+		height: auto;
+		}
+	.w-video.ratio_initial:not(.has_iframe) .w-video-h {
+		padding-bottom: 0;
+		}
+		.w-video.ratio_initial video {
+			display: block;
+			position: static;
+			}
+
+.w-hwrapper > .w-video,
+.w-vwrapper > .w-video {
+	width: 100%;
+	}
+
+.w-video.has_border_radius {
+	overflow: hidden;
+	transform: translateZ(0); /* overflow fix for Safari */
+	}
+
+/* Image Overlay */
+.w-video.with_overlay {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	cursor: pointer;
+	}
+	.w-video.with_overlay .w-video-h > * {
+		visibility: hidden;
+		}
+	.w-video.with_overlay .w-video-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -1.5em 0 0 -1.5em;
+		line-height: 3;
+		width: 2.8em;
+		padding-left: 0.2em;
+		text-align: center;
+		box-sizing: content-box;
+		border-radius: 50%;
+		pointer-events: none;
+		transition: transform 0.2s;
+		}
+	.w-video.with_overlay:hover .w-video-icon {
+		transform: scale(1.2);
+		}
+		.w-video.with_overlay .w-video-icon:after {
+			content: '\f04b';
+			font-family: fontawesome;
+			font-weight: 900;
+			vertical-align: top;
+			}
+
+/* Video Caption */
+.w-video-privacy {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 2rem;
+	background: rgba(0,0,0,.06);
+	}
+	.w-video-privacy > :first-child {
+		margin-top: auto;
+		}
+	.w-video-privacy > :last-child {
+		margin-bottom: auto;
+		}

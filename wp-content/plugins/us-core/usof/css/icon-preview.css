@@ -1,0 +1,21 @@
+
+/* TYPE Icon */
+.us-icon {
+	display: flex;
+	align-items: flex-start;
+	}
+.us-icon-preview {
+	flex-shrink: 0;
+	text-align: center;
+	line-height: 2.8em;
+	width: 2.8em;
+	box-sizing: border-box;
+	}
+	.us-icon-preview i {
+		vertical-align: top;
+		font-size: 1.4em;
+		line-height: inherit;
+		}
+.us-icon-input {
+	flex-grow: 1;
+	}

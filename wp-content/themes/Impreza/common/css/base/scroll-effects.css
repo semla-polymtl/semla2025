@@ -1,0 +1,22 @@
+/* Scroll Effects
+------------------------------------------------------------------*/
+.has_scroll_effects {
+	transition-property: transform, opacity;
+	transition-duration: var( --scroll-delay, 0 );
+	will-change: transform, opacity;
+	}
+	.has_scroll_effects.in_viewport {
+		/* styles for an element when in a viewport */
+		}
+
+.has_scroll_effects.has_translate_y,
+.has_scroll_effects.has_translate_x,
+.has_scroll_effects.has_scale {
+	transform:
+		translateY( var( --translateY, 0 ) )
+		translateX( var( --translateX, 0 ) )
+		scale( var( --scale, 1 ) );
+	}
+.has_scroll_effects.has_opacity {
+	opacity: var( --opacity, 1 );
+	}

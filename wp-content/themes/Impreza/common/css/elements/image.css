@@ -1,0 +1,234 @@
+/*
+ * Image
+ */
+
+.l-header .w-image {
+	flex-shrink: 0;
+	transition: height 0.3s;
+	}
+.l-header .w-image.no_image {
+	width: 100%;
+	}
+.l-main .w-image {
+	max-width: 100%;
+	}
+	.w-image-h {
+		display: block;
+		height: inherit;
+		max-height: inherit;
+		border-radius: inherit;
+		border-color: inherit !important;
+		color: inherit !important;
+		}
+	.w-image:not([class*="style_phone"]) .w-image-h {
+		background: inherit;
+		}
+		.w-image img,
+		.w-image picture {
+			object-fit: contain;
+			vertical-align: top;
+			height: inherit;
+			max-height: inherit;
+			border-radius: inherit;
+			}
+		/* Reset images width if they have a specified height */
+		.w-image.has_height img,
+		.w-image[class*="ush_image_"] img {
+			width: auto;
+			}
+	.w-image-h[href] {
+		position: relative;
+		}
+	.w-image-meta {
+		line-height: 1.6;
+		}
+		.w-image-description {
+			font-size: 0.85rem;
+			margin: 0.2rem 0;
+			opacity: 0.5;
+			}
+
+/* For transparent image in header */
+.w-image.with_transparent .w-image-h > :last-of-type,
+.l-header.bg_transparent:not(.sticky) .w-image.with_transparent .w-image-h >:first-of-type {
+	display: none;
+	}
+.l-header.bg_transparent:not(.sticky) .w-image.with_transparent .w-image-h >:last-of-type {
+	display: block;
+	}
+
+/* Has Aspect Ratio */
+.w-image.has_ratio {
+	width: 100%;
+	}
+	.w-image.has_ratio .w-image-h {
+		display: block !important;
+		position: relative;
+		}
+		.w-image.has_ratio img {
+			position: absolute !important;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			}
+
+/* STYLE: circle */
+.w-image.style_circle img {
+	border-radius: 50%;
+	}
+
+/* STYLE: outlined */
+.w-image.style_outlined img {
+	border: 5px solid var(--color-content-border);
+	}
+
+/* STYLE: shadow-1 */
+.w-image.style_shadow-1 img {
+	box-shadow: var(--box-shadow);
+	}
+
+/* STYLE: shadow-2 */
+.w-image.style_shadow-2 .w-image-h {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	}
+	.w-image-shadow {
+		position: absolute;
+		top: 15%;
+		left: 5%;
+		right: 5%;
+		height: 90%;
+		background-size: 200% 80%;
+		background-position: center bottom;
+		background-repeat: no-repeat;
+		border-radius: inherit;
+		-webkit-filter: blur(25px);
+		filter: blur(25px);
+		transform: translateZ(0); /* fix for Safari */
+		}
+	.w-image.style_shadow-2 img {
+		position: relative;
+		}
+	.w-image.style_shadow-2.meta_simple .w-image-meta {
+		position: relative;
+		}
+
+/* META: simple */
+.w-image.meta_simple .w-image-meta {
+    padding-top: 0.6rem;
+	}
+.w-image.meta_simple[class*="style_phone6"] .w-image-meta {
+	padding-top: 32%;
+	}
+
+/* META: modern */
+.w-image.meta_modern .w-image-h {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	}
+.w-image.meta_modern .w-image-meta {
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-height: 100%;
+	padding: 3rem 1rem 0.6rem;
+	overflow: hidden;
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+	background: linear-gradient(transparent, rgba(30,30,30,0.8)) repeat-x;
+	color: #fff;
+	}
+.w-image.meta_modern[class*="style_phone6"] .w-image-meta {
+	left: 12.5%;
+	right: 12.5%;
+	bottom: 13.5%;
+	}
+.w-image.meta_modern.style_outlined .w-image-meta {
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	}
+.w-image.has_bg_color:not(.style_phone12) .w-image-meta {
+	padding-top: 0.6rem;
+	background: inherit;
+	}
+.w-image.has_text_color .w-image-meta {
+	color: inherit;
+	}
+
+/* Stylize as iPhone 12 */
+.w-image.style_phone12 {
+	position: relative;
+	padding-bottom: 205%;
+	border-radius: 16% / 7.6%;
+	background: var(--color-content-primary-grad);
+	color: #000;
+	}
+@supports (aspect-ratio: 1) {
+.w-image.style_phone12 {
+	aspect-ratio: 1 / 2.05;
+	padding-bottom: 0;
+	}
+}
+	.w-image.style_phone12 > .w-image-h {
+		position: absolute;
+		top: .68%;
+		bottom: .68%;
+		left: 1.4%;
+		right: 1.4%;
+		padding: 3.4%;
+		background-color: currentColor;
+		border-radius: 15% / 7%;
+		}
+		.w-image.style_phone12 > .w-image-h > img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 12.6% / 5.6%;
+			}
+		.w-image.style_phone12 > .w-image-h:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 25%;
+			width: 50%;
+			height: 5.3%;
+			border-radius: 0 0 11% 11% / 0 0 50% 50%;
+			background-color: inherit;
+			}
+.w-image.style_phone12.align_left,
+.w-image.style_phone12.align_right {
+	float: none;
+	margin: 0;
+	}
+	.w-image.style_phone12.meta_modern > .w-image-h {
+		overflow: hidden;
+		}
+	.w-image.style_phone12.meta_modern .w-image-meta {
+		left: 1.4%;
+		right: 1.4%;
+		padding: 15% 8% 8%;
+		}
+
+/* Colors
+   ========================================================================== */
+.color_primary .w-image.style_outlined img,
+.color_secondary .w-image.style_outlined img {
+	border-color: rgba(255,255,255,0.33);
+	}
+.color_alternate .w-image.style_outlined img {
+	border-color: var(--color-alt-content-border);
+	}
+.color_footer-top .w-image.style_outlined img {
+	border-color: var(--color-subfooter-border);
+	}
+.color_footer-bottom .w-image.style_outlined img {
+	border-color: var(--color-footer-border);
+	}

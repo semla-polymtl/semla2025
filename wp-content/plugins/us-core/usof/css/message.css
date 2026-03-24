@@ -1,0 +1,47 @@
+
+/* TYPE Message */
+.usof-form-row.type_message .usof-form-row-desc {
+	display: block;
+	line-height: 1.5;
+	padding: 1.25em;
+	border-radius: 3px;
+	background-color: var(--usof-color-blue-5);
+	}
+.usof-form-row.type_message.color_green .usof-form-row-desc {
+	background-color: var(--usof-color-green-5);
+	}
+.usof-form-row.type_message.color_red .usof-form-row-desc {
+	background-color: var(--usof-color-red-5);
+	}
+.usof-form-row.type_message.color_yellow .usof-form-row-desc {
+	background-color: var(--usof-color-yellow-5);
+	}
+
+.usof-form-row.type_message.string {
+	margin-top: -15px;
+	padding-top: 0;
+	}
+	.usof-form-row.type_message.string .usof-form-row-desc {
+		font-weight: 600;
+		padding: 0;
+		background: none;
+		color: #f90; /* fixed value for Maintenance Mode */
+		}
+
+.usof-form-row[data-name="used_in_locations"] {
+	padding: 0 !important;
+	}
+	.usof-form-row[data-name="used_in_locations"] .usof-form-row-desc {
+		font-size: 13px;
+		line-height: 1.4;
+		padding: 0;
+		background: none;
+		}
+	.usof-form-row[data-name="used_in_locations"] .usof-form-row-desc-text > div {
+		margin-bottom: 8px;
+		}
+
+.usof-form-row.type_message.customize_live a {
+	font-size: 18px;
+	line-height: 1.2;
+	}

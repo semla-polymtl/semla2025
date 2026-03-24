@@ -1,0 +1,432 @@
+/* 
+ * Forms
+ */
+
+.w-form {
+	line-height: 1.4;
+	}
+.w-form-h {
+	display: flex;
+	margin-left: calc( var(--fields-gap, 1rem) / -2 );
+	margin-right: calc( var(--fields-gap, 1rem) / -2 );
+	}
+.w-form-row {
+	position: relative;
+	width: 100%;
+	padding-left: calc( var(--fields-gap, 1rem) / 2 );
+	padding-right: calc( var(--fields-gap, 1rem) / 2 );
+	}
+	.w-form-row-label {
+		font-weight: 600;
+		margin-bottom: .3em;
+		}
+	.w-form-row-description {
+		font-size: .9em;
+		margin-top: .3em;
+		color: var(--color-content-faded);
+		}
+	.w-form-row-field {
+		position: relative;
+		}
+		.w-form-row-field > i {
+			position: absolute;
+			z-index: 1;
+			top: var(--inputs-border-width, 1px);
+			inset-inline-start: var(--inputs-border-width, 1px);
+			font-size: var(--inputs-font-size, inherit);
+			line-height: var(--inputs-height, 2em);
+			width: var(--inputs-height, 2em);
+			color: var(--inputs-text-color, inherit);
+			text-align: center;
+			pointer-events: none;
+			transition: color .2s;
+			}
+		.w-form-row:has(:focus) .w-form-row-field > i {
+			color: var(--inputs-focus-text-color);
+			}
+	.w-form-row.for_select select {
+		-webkit-appearance: none;
+		height: auto;
+		padding-inline-end: calc( var(--inputs-padding, .6em) * 2 + .8em );
+		}
+		.w-form-row.for_select .w-form-row-field:after {
+			content: '';
+			position: absolute;
+			top: calc( var(--inputs-height, 2em) / 2 + var(--inputs-border-width, 1px) );
+			inset-inline-end: 0;
+			font-size: var(--inputs-font-size, inherit);
+			margin: -.2em calc( var(--inputs-padding, .6em) + var(--inputs-border-width, 1px) );
+			color: var(--inputs-text-color, inherit);
+			pointer-events: none;
+			border: .4em solid;
+			border-left-color: transparent;
+			border-right-color: transparent;
+			border-bottom-color: transparent;
+			border-radius: 2px;
+			}
+		.w-form-row.for_select:has(:focus) .w-form-row-field:after {
+			color: var(--inputs-focus-text-color, inherit);
+			}
+	.w-form-row.for_agreement label,
+	.w-form-row.for_checkboxes label,
+	.w-form-row.for_radio label {
+		display: flex;
+		align-items: center;
+		padding: .2em 0;
+		width: fit-content;
+		}
+
+/* Shift with icon */
+.w-form-row.with_icon input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.w-form-row.with_icon textarea,
+.w-form-row.with_icon select {
+	padding-inline-start: var(--inputs-height, 2em);
+	}
+
+/* Move Label */
+.w-form-row.move_label .w-form-row-label {
+	position: absolute;
+	top: calc( var(--inputs-height, 2em) / 2 + var(--inputs-border-width, 1px) - .7em );
+	z-index: 1;
+	font-size: var(--inputs-font-size, inherit);
+	font-weight: inherit;
+	margin: 0 var(--inputs-padding, .6em);
+	background: var(--inputs-background, transparent);
+	color: var(--inputs-text-color, inherit);
+	line-height: 1.4;
+	padding: 0 .3em;
+	pointer-events: none;
+	transform-origin: 0 0;
+	transition: transform .2s, top .2s;
+	}
+.w-form-row.with_icon.move_label .w-form-row-label {
+	margin-inline-start: calc( 1.6em + var(--inputs-padding, .6em) );
+	}
+.w-form-row.move_label:has(:focus) .w-form-row-label,
+.w-form-row.move_label.not-empty .w-form-row-label {
+	top: -.5em;
+	transform: scale(.75);
+	background: var(--inputs-focus-background, transparent);
+	color: var(--inputs-focus-text-color, inherit);
+	}
+
+/* Layout */
+.w-form.layout_ver .w-form-h {
+	flex-wrap: wrap;
+	}
+.w-form.layout_ver .w-form-row {
+	margin-bottom: var(--fields-gap, 1rem);
+	}
+.w-form.layout_hor .w-form-row.for_submit {
+	width: auto;
+	}
+.w-form.layout_hor .w-form-row.has_label:not(.move_label) ~ .w-form-row.for_submit {
+	align-self: flex-end;
+	}
+
+/* Columns */
+.w-form-row.cols_2 {
+	width: 50%;
+	}
+.w-form-row.cols_3 {
+	width: 33.3333%;
+	}
+.w-form-row.cols_4 {
+	width: 25%;
+	}
+
+/* Submit Button */
+.w-form-row.for_submit {
+	flex-shrink: 0;
+	margin-bottom: 0 !important;
+	}
+.w-form-row.for_submit.align_justify .w-btn {
+	width: 100%;
+	}
+.w-form .w-btn i,
+.w-form .w-btn-label {
+	display: inline-block;
+	transition: opacity 0.15s;
+	}
+.w-form .w-btn.loading i,
+.w-form .w-btn.loading .w-btn-label {
+	opacity: 0;
+	}
+.w-form .w-btn .g-preloader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 1.8em;
+	opacity: 0;
+	transform: translate(-50%,-50%);
+	transition: opacity 0.3s;
+	color: inherit;
+	}
+.w-form .w-btn.loading .g-preloader {
+	opacity: 1;
+	}
+
+/* States & Messages */
+.w-form-row-state {
+	font-size: 0.9em;
+	height: 0;
+	opacity: 0;
+	transition-property: height, padding, opacity;
+	transition-duration: 0.3s;
+	}
+.w-form-row-state[validation-for],
+.w-form-row.check_wrong .w-form-row-state {
+	height: auto;
+	padding-top: 0.3em;
+	opacity: 1;
+	color: red;
+	}
+.w-form-row.check_wrong input,
+.w-form-row.check_wrong textarea,
+.w-form-row.check_wrong select {
+	box-shadow: 0 0 0 1px red;
+	border-color: red;
+	}
+.w-form-message {
+	opacity: 0;
+	transition: opacity 0.2s, margin 0.2s;
+	}
+.w-form-message.type_success {
+	margin: var(--fields-gap, 1rem) 0;
+	opacity: 1;
+	color: #4c0;
+	}
+.w-form-message.type_error {
+	margin: var(--fields-gap, 1rem) 0;
+	opacity: 1;
+	color: red;
+	}
+
+/* FOR comments */
+.comment-form .w-form-row {
+	padding: 0;
+	line-height: 1.4;
+	margin-bottom: 1em;
+	}
+
+/* FOR protected post */
+.post-password-form {
+	margin: 1.5rem auto;
+	}
+.l-section.width_full .post-password-form {
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+	}
+.post-password-form p {
+	margin-bottom: 0.5rem;
+	}
+.post-password-form p label {
+	font-size: 0;
+	line-height: 0;
+	}
+.post-password-form p input[type=password] {
+	font-size: 1rem;
+	max-width: 300px;
+	margin-bottom: 0.5em;
+	}
+
+/* jQuery UI Date picker
+   ========================================================================== */
+.ui-datepicker {
+	display: none;
+	height: auto;
+	width: 17.4rem;
+	margin: 0;
+	padding: 1rem;
+	box-shadow: var(--box-shadow);
+	background: var(--color-content-bg-grad);
+	color: var(--color-content-text);
+	}
+	.ui-datepicker a {
+		transition: none;
+		color: inherit !important;
+		}
+	.ui-datepicker-header {
+		position: relative;
+		text-align: center;
+		line-height: 2.2rem;
+		min-height: 2.2rem;
+		margin: 0 0 .5rem;
+		padding: 0;
+		border: none;
+		}
+	.ui-datepicker-title {
+		font-size: .9rem;
+		margin: 0 14.285%;
+		}
+		.ui-datepicker-title select {
+			font-size: inherit;
+			line-height: inherit;
+			height: 2.2rem;
+			min-height: 0;
+			width: 40%;
+			padding: 0 .3rem;
+			margin: 0;
+			border-radius: 0 !important;
+			border: none !important;
+			box-shadow: none !important;
+			background: none !important;
+			color: inherit !important;
+			}
+	.ui-datepicker-prev {
+		position: absolute;
+		left: 0;
+		width: 14.285%;
+		cursor: pointer;
+		border-radius: .2rem;
+		}
+		.ui-datepicker-prev span {
+			vertical-align: top;
+			font-size: 0;
+			}
+		.ui-datepicker-prev:before {
+			vertical-align: top;
+			content: '\f104';
+			font-family: fontawesome;
+			font-weight: 400;
+			font-size: 1.4rem;
+			}
+	.ui-datepicker-next {
+		position: absolute;
+		right: 0;
+		width: 14.285%;
+		cursor: pointer;
+		border-radius: .2rem;
+		}
+		.ui-datepicker-next span {
+			vertical-align: top;
+			font-size: 0;
+			}
+		.ui-datepicker-next::before {
+			vertical-align: top;
+			content: '\f105';
+			font-family: fontawesome;
+			font-weight: 400;
+			font-size: 1.4rem;
+			}
+	.ui-datepicker th {
+		font-size: .8rem;
+		font-weight: normal;
+		text-align: center;
+		border: none;
+		padding: 0;
+		opacity: .33;
+		}
+	.ui-datepicker tbody td {
+		font-size: .9rem;
+		text-align: center;
+		width: 14.285%;
+		padding: 0;
+		border: none;
+		}
+	.ui-datepicker tbody td.ui-state-disabled {
+		opacity: .5;
+		cursor: default;
+		}
+		.ui-datepicker td span,
+		.ui-datepicker td a {
+			display: block;
+			line-height: 2.2rem;
+			border-radius: .2rem;
+			text-decoration: none !important;
+			}
+		.ui-datepicker a.ui-state-active {
+			background: var(--color-content-primary-grad);
+			color: #fff !important;
+			}
+		.no-touch .ui-datepicker a:not(.ui-state-active):hover {
+			background: var(--color-content-text);
+			color: var(--color-content-bg) !important;
+			}
+		.ui-datepicker a.ui-state-highlight {
+			box-shadow: inset 0 0 0 1px;
+			}
+
+/* Contact Form 7
+   ========================================================================== */
+.wpcf7-form-control-wrap {
+	display: block;
+	margin-top: .4rem;
+	}
+	.wpcf7-form-control-wrap[data-name^="select"] > select {
+		-webkit-appearance: none;
+		padding-inline-end: calc( var(--inputs-padding, .6em) * 2 + .8em );
+		}
+	.wpcf7-form-control-wrap[data-name^="select"]:after {
+		content: '';
+		position: absolute;
+		top: calc( var(--inputs-height, 2em) / 2 + var(--inputs-border-width, 1px) );
+		inset-inline-end: 0;
+		font-size: var( --inputs-font-size );
+		margin: -.2em calc( var(--inputs-padding, .6em) + var(--inputs-border-width, 1px) );
+		color: var( --inputs-text-color );
+		pointer-events: none;
+		border: .4em solid;
+		border-left-color: transparent;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+		border-radius: 2px;
+		}
+span.wpcf7-list-item {
+	display: block;
+	margin: 0;
+	width: fit-content;
+	}
+	span.wpcf7-list-item > label {
+		display: flex;
+		align-items: center;
+		padding: .2em 0;
+		}
+.wpcf7 form div.wpcf7-response-output {
+	margin: 0;
+	padding: .5rem 1rem;
+	}
+
+/* Rounded Corners
+   ========================================================================== */
+.rounded_none .ui-datepicker * {
+	border-radius: 0 !important;
+	}
+
+/* Responsive
+   ========================================================================== */
+@media screen and (max-width: 600px) {
+	.w-form-h {
+		flex-wrap: wrap;
+		}
+	.w-form-row {
+		width: 100% !important;
+		}
+	.w-form.layout_hor .w-form-row {
+		margin-bottom: var(--fields-gap, 1rem);
+		}
+	.ui-datepicker {
+		width: calc(100% - 3rem);
+		}
+	.ui-datepicker td span,
+	.ui-datepicker td a {
+		line-height: 2.6rem;
+		}
+	}
+
+@media screen and (max-width: 480px) {
+	.w-form-row.for_submit {
+		float: none !important;
+		display: block !important;
+		margin: 0 !important;
+		}
+	.w-form.align_left .w-form-message.type_success,
+	.w-form.align_right .w-form-message.type_success {
+		display: block;
+		text-align: center;
+		padding-top: 0.6em;
+		}
+	.post-password-form p input[type=password] {
+		max-width: none;
+		}
+	}

@@ -1,0 +1,113 @@
+
+/* Add to Favorites */
+.w-btn-wrapper.for_add_to_favs {
+	position: relative;
+	margin: 0;
+	width: fit-content;
+	}
+	.w-btn.us_add_to_favs.default {
+		border-radius: 3em;
+		background: rgba(0,0,0,.08);
+		}
+	.w-btn.us_add_to_favs.default.text_none {
+		padding: 0;
+		line-height: 2.2;
+		width: 2.2em;
+		}
+		.w-btn.us_add_to_favs.default:before {
+			border: none;
+			}
+		.w-btn.us_add_to_favs.default.added > i {
+			color: var(--color-content-primary);
+			}
+
+	.w-btn-wrapper.for_add_to_favs.has_bg_color > .w-btn {
+		background: inherit;
+		}
+	.w-btn-wrapper.for_add_to_favs.has_width > .w-btn {
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+		}
+	.w-btn-wrapper.for_add_to_favs.has_height > .w-btn {
+		padding-top: 0;
+		padding-bottom: 0;
+		height: 100%;
+		}
+	.w-btn-wrapper.for_add_to_favs.has_font_size > .w-btn {
+		font-size: inherit;
+		}
+		.w-btn.us_add_to_favs.added > i {
+			font-weight: bold;
+			}
+
+	.us-add-to-favs-tooltip {
+		display: none;
+		position: absolute;
+		z-index: 111;
+		font-size: 13px;
+		line-height: 1.5;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: .8em 1.2em;
+		min-width: 200px;
+		margin-top: 8px;
+		border-radius: 3px;
+		background-color: #000;
+		color: #fff;
+		}
+		.us-add-to-favs-tooltip:after {
+			content: '';
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			margin-left: -8px;
+			border-width: 8px;
+			border-style: solid;
+			border-color: transparent transparent #000;
+			}
+	.us-add-to-favs-tooltip.show {
+		display: block;
+		}
+
+/* Favorites Counter */
+.w-favs-counter {
+	position: relative;
+	font-size: 20px;
+	text-align: center;
+	}
+.w-favs-counter.hide_empty.empty {
+	display: none;
+	}
+.w-favs-counter:not(.height_full) {
+	line-height: 50px; /* fixed value */
+	}
+	.w-favs-counter-link {
+		display: block;
+		border-radius: inherit;
+		}
+		.w-favs-counter-icon {
+			display: inline-block;
+			position: relative;
+			line-height: 2.2;
+			width: 2.2em;
+			}
+			.w-favs-counter-icon i {
+				vertical-align: top;
+				line-height: inherit;
+				}
+			.w-favs-counter-quantity {
+				position: absolute;
+				right: 0;
+				font-weight: bold;
+				font-size: 11px; /* fixed value */
+				padding: 0 4px; /* fixed value */
+				line-height: 20px; /* fixed value */
+				min-width: 20px; /* fixed value */
+				border-radius: 2rem;
+				transition: transform .3s;
+				}
+			.w-favs-counter.empty .w-favs-counter-quantity {
+				transform: scale(0);
+				}

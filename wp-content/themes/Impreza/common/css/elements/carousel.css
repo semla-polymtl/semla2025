@@ -1,0 +1,457 @@
+/*
+ * Carousel
+ */
+
+/* In code below always remove img{display:block;} to avoid conflicts with theme elements.
+ * MODIFIED part of code from Owl Carousel v2.3.0 https://owlcarousel2.github.io/OwlCarousel2/
+========================================================================== */
+.owl-carousel,
+.owl-carousel .owl-item {
+	-webkit-tap-highlight-color: transparent;
+	position: relative
+	}
+.owl-carousel {
+	z-index: 1
+	}
+.owl-carousel .owl-stage {
+	position: relative;
+	touch-action: pan-y;
+	backface-visibility: hidden
+	}
+.owl-carousel .owl-stage:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0
+	}
+.owl-carousel .owl-stage-outer {
+	position: relative;
+	overflow: hidden;
+	transform: translate3d(0,0,0)
+	}
+.owl-carousel .owl-item,
+.owl-carousel .owl-wrapper {
+	backface-visibility: hidden;
+	transform: translate3d(0,0,0)
+	}
+.owl-carousel .owl-item {
+	min-height: 1px;
+	float: left;
+	backface-visibility: hidden;
+	-webkit-touch-callout: none
+	}
+.owl-carousel .owl-dots.disabled,
+.owl-carousel .owl-nav.disabled {
+	display: none
+	}
+.owl-carousel .owl-dot,
+.owl-carousel .owl-nav .owl-next,
+.owl-carousel .owl-nav .owl-prev {
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none
+	}
+.owl-carousel button.owl-dot {
+	padding: 0 !important;
+	background: none;
+	}
+.owl-carousel.owl-loading {
+	opacity: 0;
+	display: block
+	}
+.owl-carousel.owl-hidden {
+	opacity: 0
+	}
+.owl-carousel.owl-refresh .owl-item {
+	visibility: hidden
+	}
+.owl-carousel.owl-drag .owl-item {
+	touch-action: none;
+	-webkit-user-select: none;
+	user-select: none
+	}
+.owl-carousel.owl-grab {
+	cursor: move;
+	cursor: grab
+	}
+.owl-carousel.owl-rtl {
+	direction: rtl
+	}
+.owl-carousel .animated {
+	animation-duration: var(--transition-duration, .8s);
+	animation-fill-mode: both
+	}
+.owl-carousel .owl-animated-in {
+	z-index: 0
+	}
+.owl-carousel .owl-animated-out {
+	z-index: 1
+	}
+.owl-height {
+	transition: height .4s
+	}
+.owl-carousel .fadeOut {
+	animation-name: fadeOut;
+	}
+.owl-carousel .fadeIn {
+	animation-name: fade;
+	}
+
+/* Customs
+========================================================================== */
+
+/* Carousel before JS init to avoid CLS */
+.owl-carousel {
+	display: flex;
+	flex-wrap: nowrap !important;
+	gap: var(--items-gap, 0);
+	overflow: hidden;
+	}
+.owl-carousel.with_dots {
+	--dots-container-height: calc(1rem + 20px);
+	padding-bottom: var(--dots-container-height, 0);
+	}
+.owl-carousel.owl-loaded {
+	display: block !important;
+	overflow: visible !important;
+	padding-bottom: 0 !important;
+	}
+	.owl-carousel > * {
+		flex-shrink: 0;
+		width: 100%;
+		}
+	.owl-carousel.owl-loaded > * {
+		width: auto !important;
+		}
+		.owl-carousel .owl-item {
+			flex-shrink: 0;
+			}
+	.owl-carousel:not(.center_item) .owl-stage {
+		padding: 0 !important;
+		}
+	/* stretch carousel items to the equal height */
+	.owl-carousel:not(.autoheight) .owl-stage {
+		display: flex;
+		}
+		.owl-carousel:not(.autoheight):not(.owl-responsive-0):not(.has_height) .owl-item > * {
+			height: 100%;
+			max-height: inherit;
+			}
+
+.owl-carousel.valign_top,
+.owl-carousel.valign_top .owl-stage {
+	align-items: flex-start;
+	}
+.owl-carousel.valign_middle,
+.owl-carousel.valign_middle .owl-stage {
+	align-items: center;
+	}
+.owl-carousel.valign_bottom,
+.owl-carousel.valign_bottom .owl-stage {
+	align-items: flex-end;
+	}
+
+/* When Carousel has height all images should inherit its height for correct appearance in "Items = Auto" */
+.owl-carousel.has_height,
+.owl-carousel.has_height :is(
+	.owl-stage-outer,
+	.owl-stage,
+	.owl-item,
+	.w-grid-item-h,
+	.w-grid-item,
+	.post_image:only-child,
+	.post_image a,
+	.post_image img
+) {
+	max-height: inherit;
+	height: inherit;
+	width: auto;
+	}
+
+/* Carousel based on Grid */
+.w-grid.type_carousel .w-grid-list {
+	display: flex;
+	flex-wrap: wrap;
+	margin: calc( var(--gap, 0px) * -1 );
+	}
+	.w-grid.type_carousel .w-grid-item {
+		padding: var(--gap, 0px);
+		width: calc( 100% / var(--items, 1) );
+		}
+	.w-grid.type_carousel .owl-item > .w-grid-item {
+		width: 100%;
+		}
+.w-grid.type_carousel.valign_center .owl-stage {
+	align-items: center;
+	}
+.w-grid.type_carousel .g-preloader {
+	display: none;
+	}
+.w-grid.type_carousel .w-grid-list.with_dots {
+	margin-bottom: 0 !important;
+	}
+.w-hwrapper > .w-grid.type_carousel,
+.w-vwrapper > .w-grid.type_carousel {
+	width: 100%;
+	}
+.l-section.width_full > div > .g-cols.cols_1 > div > div > .w-grid.type_carousel .w-grid-list, /* frontend */
+.l-section.width_full > div > .g-cols.cols_1 > div > div > div > .w-grid.type_carousel .w-grid-list, /* live preview */
+.l-section.width_full > div > div > .vc_col-sm-12 > div > div > .w-grid.type_carousel .w-grid-list, /* frontend */
+.l-section.width_full > div > div > .vc_col-sm-12 > div > div > div > .w-grid.type_carousel .w-grid-list { /* live preview */
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	}
+
+/* Content Carousel */
+.w-content-carousel.items_2 .owl-carousel > * {
+	flex-basis: calc( ( 100% - var(--items-gap, 0) ) / 2 );
+	}
+.w-content-carousel.items_3 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 2 * var(--items-gap, 0) ) / 3 );
+	}
+.w-content-carousel.items_4 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 3 * var(--items-gap, 0) ) / 4 );
+	}
+.w-content-carousel.items_5 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 4 * var(--items-gap, 0) ) / 5 );
+	}
+.w-content-carousel.items_6 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 5 * var(--items-gap, 0) ) / 6 );
+	}
+.w-content-carousel.items_7 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 6 * var(--items-gap, 0) ) / 7 );
+	}
+.w-content-carousel.items_8 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 7 * var(--items-gap, 0) ) / 8 );
+	}
+.w-content-carousel.items_9 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 8 * var(--items-gap, 0) ) / 9 );
+	}
+.w-content-carousel.items_10 .owl-carousel > * {
+	flex-basis: calc( ( 100% - 9 * var(--items-gap, 0) ) / 10 );
+	}
+
+.w-content-carousel.has_height .owl-carousel {
+	--dots-container-height: 0;
+	}
+.w-content-carousel.has_height :is(.owl-carousel, .owl-stage-outer, .owl-stage, .owl-item, .w-image ) {
+	height: inherit;
+	max-height: inherit;
+	width: auto;
+	}
+.w-content-carousel.has_height .w-image img {
+	width: auto;
+	}
+
+/* Arrows */
+.owl-carousel .owl-nav .disabled {
+	display: none;
+	}
+.owl-carousel .owl-nav button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-top: calc( var(--dots-container-height, 0) / -2 );
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: var(--arrows-size, 1.8rem) !important; /* is needed to override button styles */
+	margin-left: var(--arrows-offset, 0);
+	margin-right: var(--arrows-offset, 0);
+	background: none;
+	transition-property: background, box-shadow, border, color, opacity, transform;
+	transition-duration: .3s;
+	}
+	.owl-nav button:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-radius: inherit;
+		border-style: solid;
+		border-color: inherit;
+		border-image: inherit;
+		border-width: 0;
+		}
+	.owl-prev:after {
+		content: '\f104';
+		font-family: fontawesome;
+		font-weight: 400;
+		padding-right: .2rem;
+		}
+	.owl-next:after {
+		content: '\f105';
+		font-family: fontawesome;
+		font-weight: 400;
+		padding-left: .2rem;
+		}
+
+/* Arrows Pos: Outside */
+.owl-carousel.navpos_outside .owl-prev {
+	right: 100%;
+	}
+.owl-carousel.navpos_outside .owl-next {
+	left: 100%;
+	}
+
+/* Arrows Pos: Inside */
+.owl-carousel.navpos_inside .owl-prev {
+	left: 0;
+	}
+.owl-carousel.navpos_inside .owl-next {
+	right: 0;
+	}
+
+/* Arrows Style: Circle */
+.owl-carousel.navstyle_circle .owl-nav button {
+	height: 3.5rem;
+	width: 3.5rem;
+	border-radius: 50%;
+	}
+
+/* Arrows Style: Block */
+.owl-carousel.navstyle_block .owl-nav button {
+	top: 0;
+	bottom: var(--dots-container-height, 0);
+	width: 4rem;
+	margin-top: 0;
+	transform: none;
+	}
+
+.owl-carousel.navpos_inside.navstyle_circle > .owl-nav button,
+.owl-carousel.navpos_inside.navstyle_block > .owl-nav button {
+	text-shadow: 0 1px 3px rgba(0,0,0,.3);
+	color: #fff;
+	}
+.no-touch .owl-carousel.navpos_inside.navstyle_circle > .owl-nav button:hover {
+	background: rgba(0,0,0,.5);
+	}
+.no-touch .owl-carousel.navpos_inside.navstyle_block .owl-next:hover {
+	background: linear-gradient( to right, transparent, rgba(0,0,0,.5) );
+	}
+.no-touch .owl-carousel.navpos_inside.navstyle_block .owl-prev:hover {
+	background: linear-gradient( to left, transparent, rgba(0,0,0,.5) );
+	}
+.no-touch .owl-carousel.navpos_outside.navstyle_circle > .owl-nav button:hover,
+.no-touch .owl-carousel.navpos_outside.navstyle_block > .owl-nav button:hover{
+	background: var(--color-content-bg-alt-grad);
+	}
+
+/* Dots */
+.owl-dots {
+	text-align: center;
+	line-height: 0;
+	padding-top: 1rem;
+	}
+
+/* Dot Style Circle */
+.dotstyle_circle .owl-dot span {
+	display: block;
+	border-radius: 50%;
+	background: currentColor;
+	width: 8px;
+	height: 8px;
+	margin: 6px;
+	opacity: .33;
+	}
+.no-touch .dotstyle_circle .owl-dot:hover span {
+	opacity: 1;
+	}
+.dotstyle_circle .owl-dot.active span {
+	background: transparent !important;
+	box-shadow: 0 0 0 2px var(--color-content-primary);
+	opacity: 1;
+	}
+.color_primary .dotstyle_circle .owl-dot.active span,
+.color_secondary .dotstyle_circle .owl-dot.active span {
+	box-shadow: 0 0 0 2px #fff;
+	}
+
+/* Dot Style Square */
+.dotstyle_diamond .owl-dot span {
+	display: block;
+	background: currentColor;
+	width: 8px;
+	height: 8px;
+	margin: 6px 8px;
+	opacity: .33;
+	transform: rotate(45deg);
+	}
+.no-touch .dotstyle_diamond .owl-dot:hover span {
+	opacity: 1;
+	}
+.dotstyle_diamond .owl-dot.active span {
+	background: var(--color-content-primary);
+	border: 1px solid var(--color-content-primary);
+	opacity: 1;
+	}
+.color_primary .dotstyle_diamond .owl-dot.active span,
+.color_secondary .dotstyle_diamond .owl-dot.active span {
+	background: #fff;
+	border: 1px solid #fff;
+	}
+
+/* Dot Style Dash */
+.dotstyle_dash .owl-dot span {
+	display: block;
+	background: currentColor;
+	width: 24px;
+	height: 2px;
+	margin: 9px 2px;
+	opacity: .33;
+	}
+.no-touch .dotstyle_dash .owl-dot:hover span {
+	opacity: 1;
+	}
+.dotstyle_dash .owl-dot.active span {
+	background: var(--color-content-primary);
+	opacity: 1;
+	}
+.color_primary .dotstyle_dash .owl-dot.active span,
+.color_secondary .dotstyle_dash .owl-dot.active span {
+	background: #fff;
+	}
+
+/* Dot Style Smudge */
+.dotstyle_smudge .owl-dot span {
+	display: block;
+	border-radius: 4px;
+	background: currentColor;
+	width: 10px;
+	height: 4px;
+	margin: 8px 3px;
+	transition: width .4s;
+	}
+.dotstyle_smudge .owl-dot.active span {
+	width: 42px;
+	}
+
+/* Colors
+   ========================================================================== */
+.no-touch .color_alternate .owl-carousel.navpos_outside.navstyle_circle > .owl-nav button:hover,
+.no-touch .color_alternate .owl-carousel.navpos_outside.navstyle_block > .owl-nav button:hover {
+	background: var(--color-alt-content-bg-alt-grad);
+	}
+.no-touch .color_primary .owl-carousel.navpos_outside.navstyle_circle > .owl-nav button:hover,
+.no-touch .color_primary .owl-carousel.navpos_outside.navstyle_block > .owl-nav button:hover,
+.no-touch .color_secondary .owl-carousel.navpos_outside.navstyle_circle > .owl-nav button:hover,
+.no-touch .color_secondary .owl-carousel.navpos_outside.navstyle_block > .owl-nav button:hover{
+	background: rgba(0,0,0,.25);
+	}
+
+/* Responsive
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+.w-grid.type_carousel .w-grid-list {
+	padding: 0 !important;
+	}
+}
+@media screen and (max-width: 600px) {
+.w-grid.type_carousel .owl-carousel:not(.owl-loaded) > * {
+	width: 100% !important;
+	}
+}

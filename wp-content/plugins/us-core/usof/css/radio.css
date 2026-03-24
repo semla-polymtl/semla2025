@@ -1,0 +1,144 @@
+
+/* TYPE Radio like Switchers */
+.usof-radio {
+	display: flex;
+	flex-wrap: wrap;
+	padding: .2em;
+	border-radius: 4px;
+	background-color: var(--usof-color-gray-2);
+	box-shadow: var(--usof-box-shadow-inset);
+	}
+	.usof-radio label {
+		flex: 1 0 40px;
+		}
+		.usof-radio input[type=radio] {
+			display: none;
+			}
+		.usof-radio-value {
+			display: block;
+			text-align: center;
+			line-height: 1.2;
+			padding: .6em;
+			height: 100%;
+			border-radius: 1px;
+			box-sizing: border-box;
+			}
+		.usof-radio-value:hover {
+			color: var(--usof-color-blue-50);
+			}
+		.usof-radio input[type=radio]:checked + .usof-radio-value,
+		/* Fix for Safari, not to lose active button state */
+		.usof-radio input[type=radio][checked] + .usof-radio-value {
+			background-color: var(--usof-color-white);
+			box-shadow: 0 1px 0 rgba(0,0,0,.1);
+			color: inherit;
+			cursor: default;
+			pointer-events: none;
+			}
+
+/* Set icon for the "Default" value in Alignment options */
+.fa-align-::before,
+.fa-align-inherit::before, /* Optional value when using responsive */
+.fa-align-none::before {
+	content: '\f05e';
+	}
+
+/* Custom appearance for BG position control */
+.usof-form-row.type_radio.bgpos .usof-radio {
+	display: inline-grid;
+	vertical-align: top;
+	grid-template-columns: repeat(3, 1fr);
+	}
+.rtl .usof-form-row.type_radio.bgpos .usof-radio {
+	flex-direction: row-reverse;
+	}
+	.usof-form-row.type_radio.bgpos .usof-radio-value {
+		padding: 1em 1.1em;
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(1) i {
+		transform: rotate(-45deg);
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(3) i {
+		transform: rotate(45deg);
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(4) i {
+		transform: rotate(-90deg);
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(5) i::before {
+		content: '\f111';
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(6) i {
+		transform: rotate(90deg);
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(7) i {
+		transform: rotate(-135deg);
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(8) i {
+		transform: rotate(180deg);
+		}
+	.usof-form-row.type_radio.bgpos label:nth-child(9) i {
+		transform: rotate(135deg);
+		}
+
+/* TYPE Imgradio */
+.usof-imgradio {
+	display: grid;
+	grid-gap: 1em 1.5em;
+	grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+	}
+	.usof-imgradio label {
+		-webkit-user-select: none;
+		user-select: none;
+		}
+		.usof-imgradio input[type=radio] {
+			display: none;
+			}
+		.usof-imgradio-image {
+			display: block;
+			position: relative;
+			overflow: hidden;
+			min-height: 60px;
+			background: var(--usof-color-gray-30);
+			color: var(--usof-color-white);
+			}
+		.usof-imgradio label:hover .usof-imgradio-image {
+			background: var(--usof-color-gray-70);
+			}
+		.usof-imgradio input[type=radio]:checked + .usof-imgradio-image {
+			background: var(--usof-color-blue-50);
+			}
+		.usof-imgradio input[type=radio]:checked + .usof-imgradio-label {
+			font-weight: 600;
+			color: var(--usof-color-blue-50);
+			}
+			.usof-imgradio label img {
+				display: block;
+				padding: 3px;
+				max-width: 100%;
+				pointer-events: none;
+				box-sizing: border-box; /* fix for WPBakery */
+				}
+			.usof-imgradio-image svg {
+				display: block;
+				position: absolute;
+				cursor: pointer;
+				}
+			.us_shape_top .usof-imgradio-image svg {
+				top: 0;
+				height: 25%;
+				width: 101%;
+				transform: rotateX(180deg);
+				}
+			.us_shape_bottom .usof-imgradio-image svg {
+				bottom: 0;
+				height: 25%;
+				width: 101%;
+				}
+		.usof-imgradio-label {
+			display: block;
+			text-align: center;
+			}
+
+.usof-form-row[data-name="columns"] .usof-imgradio-image {
+	min-height: 30px;
+	}

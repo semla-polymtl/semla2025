@@ -1,0 +1,69 @@
+/* 
+ * Horizontal Wrapper
+ */
+
+.w-hwrapper {
+	display: flex;
+	align-items: center;
+	}
+.w-hwrapper.wrap {
+	flex-wrap: wrap;
+	}
+	.w-hwrapper > :not(:last-child) {
+		margin-right: var(--hwrapper-gap, 1.2rem);
+		}
+	.w-hwrapper.align_center > * {
+		margin-left: calc( var(--hwrapper-gap, 1.2rem) / 2 );
+		margin-right: calc( var(--hwrapper-gap, 1.2rem) / 2 );
+		}
+
+/* Alignment */
+.w-hwrapper.align_center {
+	justify-content: center;
+	}
+.w-hwrapper.align_justify {
+	justify-content: space-between;
+	}
+.w-hwrapper.align_right {
+	justify-content: flex-end;
+	}
+
+/* Valign */
+.w-hwrapper.valign_stretch {
+	align-items: stretch;
+	}
+.w-hwrapper.valign_top {
+	align-items: flex-start;
+	}
+.w-hwrapper.valign_bottom {
+	align-items: flex-end;
+	}
+.w-hwrapper.valign_baseline {
+	display: block;
+	}
+	.w-hwrapper.valign_baseline > *:not(style) {
+		display: inline-block;
+		vertical-align: baseline !important;
+		}
+		.w-hwrapper.valign_baseline > .w-btn-wrapper > .w-btn {
+			vertical-align: baseline;
+			}
+
+/* Full Width elements (like Button) inside Wrapper */
+.w-hwrapper > .align_justify {
+	width: 100%;
+	}
+
+/* Link */
+.w-hwrapper.has-link {
+	position: relative;
+	}
+	.w-hwrapper-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: 0 !important;
+		z-index: 10;
+		}

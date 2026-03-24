@@ -1,0 +1,188 @@
+/* 
+ * IconBox
+ */
+
+.w-iconbox {
+	position: relative;
+	}
+	.w-iconbox > .w-iconbox-link {
+		display: block; /* fix focus state in Chrome */
+		flex-shrink: 0;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		}
+		.w-iconbox-icon {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			font-size: 2rem; /* default value */
+			text-align: center;
+			max-width: 100%;
+			transition: background .2s, color .2s, box-shadow .2s;
+			}
+		.w-iconbox:not(.icontype_img) .w-iconbox-icon {
+			line-height: 1;
+			}
+			.w-iconbox-icon i {
+				vertical-align: top;
+				line-height: inherit;
+				}
+			.w-iconbox-icon svg,
+			.w-iconbox-icon img {
+				height: auto;
+				width: 1em;
+				}
+		.w-iconbox-title {
+			margin-bottom: 0;
+			}
+			.w-iconbox-title > a {
+				color: inherit;
+				}
+		.w-iconbox-title:not(:empty) {
+			padding: .5em 0;
+			}
+		.w-iconbox-text p:not(:last-child) {
+			margin-bottom: 0.75rem;
+			}
+
+/* Alignment of the whole IconBox */
+.w-iconbox.align_center {
+	justify-content: center;
+	}
+.w-iconbox.align_right {
+	justify-content: flex-end;
+	}
+
+/* ICONPOS left & right */
+.w-iconbox.iconpos_left,
+.w-iconbox.iconpos_right {
+	display: flex;
+	align-items: flex-start;
+	}
+.w-iconbox.iconpos_left.no_text,
+.w-iconbox.iconpos_left.no_title,
+.w-iconbox.iconpos_right.no_text,
+.w-iconbox.iconpos_right.no_title {
+	align-items: center;
+	}
+	.w-iconbox.iconpos_left .w-iconbox-icon {
+		margin-right: calc(15px + 0.2em);
+		}
+	.w-iconbox.iconpos_right .w-iconbox-icon {
+		margin-left: calc(15px + 0.2em);
+		}
+		.w-iconbox.iconpos_left .w-iconbox-title,
+		.w-iconbox.iconpos_right .w-iconbox-title {
+			padding-top: 0;
+			margin-top: -0.2em;
+			}
+		.w-iconbox.iconpos_left.no_text .w-iconbox-title,
+		.w-iconbox.iconpos_right.no_text .w-iconbox-title {
+			padding-bottom: 0;
+			margin-top: 0;
+			}
+.w-iconbox.iconpos_left.no_title.no_text,
+.w-iconbox.iconpos_right.no_title.no_text {
+	display: inline-block;
+	vertical-align: top;
+	}
+	.w-iconbox.iconpos_left.no_title.no_text .w-iconbox-icon,
+	.w-iconbox.iconpos_right.no_title.no_text .w-iconbox-icon {
+		margin: 0.3rem;
+		}
+	
+/* STYLE: default */
+.w-iconbox.style_default.iconpos_left .w-iconbox-icon,
+.w-iconbox.style_default.iconpos_right .w-iconbox-icon {
+	width: 1.1em; /* fix to align icons at the left correctly */
+	}
+
+/* STYLE: circle & outlined */
+.w-iconbox.style_circle .w-iconbox-icon,
+.w-iconbox.style_outlined .w-iconbox-icon {
+	line-height: 2.5em;
+	height: 2.5em;
+	width: 2.5em;
+	overflow: hidden;
+	border-radius: 50%;
+	}
+.w-iconbox.style_outlined .w-iconbox-icon {
+	box-shadow: inset 0 0 0 2px;
+	}
+.no-touch .w-iconbox.style_circle .w-iconbox-link:hover .w-iconbox-icon,
+.no-touch .w-iconbox.style_outlined .w-iconbox-link:hover .w-iconbox-icon {
+	background: var(--color-content-primary-grad);
+	box-shadow: inset 0 0 0 2px transparent;
+	color: #fff;
+	}
+
+/* Colors
+   ========================================================================== */
+.w-iconbox.color_custom .w-iconbox-icon {
+	color: var(--icon-color);
+	}
+	.w-iconbox.color_custom.has_gradient .w-iconbox-icon i {
+		background: var(--icon-color);
+		-webkit-background-clip: text;
+		color: transparent;
+		}
+.w-iconbox.style_circle.color_custom .w-iconbox-icon {
+	background: var(--icon-bg-color);
+	}
+.w-iconbox.style_outlined.color_custom .w-iconbox-icon {
+	box-shadow: inset 0 0 0 2px var(--icon-bg-color);
+	}
+
+.w-iconbox.color_light .w-iconbox-icon {
+	color: var(--color-content-border);
+	}
+.w-iconbox.color_primary .w-iconbox-icon {
+	color: var(--color-content-primary);
+	}
+.w-iconbox.color_secondary .w-iconbox-icon {
+	color: var(--color-content-secondary);
+	}
+.w-iconbox.style_circle.color_light .w-iconbox-icon {
+	background: var(--color-content-border);
+	color: var(--color-content-text);
+	}
+.w-iconbox.style_circle.color_contrast .w-iconbox-icon {
+	background: var(--color-content-text);
+	color: var(--color-content-bg);
+	}
+.w-iconbox.style_circle.color_primary .w-iconbox-icon {
+	background: var(--color-content-primary-grad);
+	color: #fff !important;
+	}
+.w-iconbox.style_circle.color_secondary .w-iconbox-icon {
+	background: var(--color-content-secondary-grad);
+	color: #fff !important;
+	}
+
+.color_alternate .w-iconbox.color_light .w-iconbox-icon {
+	color: var(--color-alt-content-border);
+	}
+.color_alternate .w-iconbox.color_primary .w-iconbox-icon {
+	color: var(--color-alt-content-primary);
+	}
+.color_alternate .w-iconbox.color_secondary .w-iconbox-icon {
+	color: var(--color-alt-content-secondary);
+	}
+.color_alternate .w-iconbox.style_circle.color_light .w-iconbox-icon {
+	background: var(--color-alt-content-border);
+	color: var(--color-alt-content-text);
+	}
+.color_alternate .w-iconbox.style_circle.color_contrast .w-iconbox-icon {
+	background: var(--color-alt-content-text);
+	color: var(--color-alt-content-bg);
+	}
+.color_alternate .w-iconbox.style_circle.color_primary .w-iconbox-icon {
+	background: var(--color-alt-content-primary-grad);
+	}
+.color_alternate .w-iconbox.style_circle.color_secondary .w-iconbox-icon {
+	background: var(--color-alt-content-secondary-grad);
+	}
+.no-touch .color_alternate .w-iconbox.style_circle .w-iconbox-link:hover .w-iconbox-icon,
+.no-touch .color_alternate .w-iconbox.style_outlined .w-iconbox-link:hover .w-iconbox-icon {
+	background: var(--color-alt-content-primary-grad);
+	}

@@ -1,0 +1,158 @@
+
+/* TYPE Design Options */
+.usof-design-options * {
+	box-sizing: border-box;
+	}
+.usof-design-options .hidden {
+	display: none !important;
+	}
+	.usof-design-options:after {
+		content: '';
+		display: block;
+		border-top: 1px solid var(--usof-color-gray-5);
+		}
+
+/* This field is required for display and correct operation Copy/Paste */
+textarea.usof_design_value {
+	display: block;
+	position: absolute;
+	left: -9999999px;
+	margin-bottom: .6em !important;
+	min-height: 0;
+	max-height: 80px;
+	resize: none;
+	}
+
+/* Copy/Paste styles */
+.usof-design-options-import {
+	position: relative;
+	margin-bottom: .6em;
+	display: flex;
+	align-items: center;
+	}
+	.usof-design-options-import .usof-button {
+		font-size: .9em;
+		margin-right: .5em;
+		}
+		.usof-design-options-import .usof-button:active {
+			opacity: .5;
+			}
+	.usof-design-options-import-novalid {
+		color: red;
+		}
+
+/* Header */
+.usof-design-options-header {
+	display: flex;
+	line-height: 30px;
+	padding: 8px 0;
+	position: relative;
+	cursor: pointer;
+	border-top: 1px solid var(--usof-color-gray-5);
+	}
+	.usof-design-options-header:hover {
+		background: radial-gradient(farthest-side at 50% 0%, var(--usof-color-gray-2), transparent);
+		}
+	.usof-design-options-header-title {
+		vertical-align: top;
+		font-size: 1.15em;
+		font-weight: 600;
+		margin-right: 5px;
+		}
+	.usof-design-options-header.changed .usof-design-options-header-title {
+		color: var(--usof-color-blue-50);
+		}
+
+	/* reset */
+	.usof-design-options-reset {
+		visibility: hidden;
+		font-size: .9em;
+		padding: 0 10px;
+		border-radius: 4px;
+		color: var(--usof-color-blue-50);
+		}
+	.usof-design-options-reset:hover {
+		background: var(--usof-color-gray-2);
+		}
+	.usof-design-options-header.changed .usof-design-options-reset {
+		visibility: visible;
+		}
+
+	/* responsive */
+	.usof-design-options-responsive {
+		visibility: hidden;
+		padding: 0 10px;
+		border-radius: 4px;
+		margin-right: auto;
+		}
+		.usof-design-options-responsive:before {
+			font-size: 1.1em;
+			}
+	.usof-design-options-header.active .usof-design-options-responsive {
+		visibility: visible;
+		}
+	.usof-design-options-responsive:hover {
+		background: var(--usof-color-gray-2);
+		color: var(--usof-color-gray-90);
+		}
+	.usof-design-options-header.responsive .usof-design-options-responsive {
+		visibility: visible;
+		color: var(--usof-color-blue-50);
+		}
+
+/* content */
+.usof-design-options-content {
+	display: none;
+	margin: 0 -1em;
+	padding-bottom: 1em;
+	}
+.usof-design-options-content.active {
+	display: block;
+	}
+	.usof-design-options-content-fields {
+		display: flex;
+		flex-wrap: wrap;
+		}
+		.usof-design-options-content-fields > .usof-form-row {
+			height: auto !important;
+			}
+
+/* Responsive states */
+.usof-design-options-content .usof-responsive-buttons {
+	display: none;
+	margin: .6em 1em;
+	}
+.responsive + .usof-design-options-content > .usof-responsive-buttons {
+	display: flex;
+	}
+
+/* control rows */
+.usof-design-options .usof-form-row {
+	flex-shrink: 0;
+	padding: 10px 15px;
+	position: relative;
+	}
+	.usof-design-options .usof-form-row > i {
+		cursor: pointer;
+		position: absolute;
+		z-index: 1;
+		top: 2.4em;
+		right: -1em;
+		width: 2em;
+		line-height: 2.8em;
+		text-align: center;
+		}
+	.usof-design-options .usof-form-row > i:hover {
+		background: var(--usof-color-gray-2);
+		}
+	.usof-design-options .usof-form-row > i.fa-link {
+		color: var(--usof-color-blue-50);
+		}
+
+/* Always 4 columns for margin, padding, border, position inputs */
+.usof-design-options .usof-form-row.cols_4 {
+	width: 25%;
+	}
+	.usof-design-options .usof-form-row.cols_4 > .usof-form-row-title {
+		white-space: nowrap;
+		}

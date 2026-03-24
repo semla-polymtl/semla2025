@@ -1,0 +1,60 @@
+/*
+ * TablePress
+ */
+
+.l-body .tablepress {
+	--border-color: var(--color-content-border);
+	--even-bg-color: var(--color-content-bg-grad);
+	--head-active-bg-color: transparent;
+	--head-active-text-color: var(--color-content-primary);
+	--head-bg-color: transparent;
+	--hover-bg-color: var(--color-content-bg-alt-grad);
+	--odd-bg-color: rgba(0,0,0,0.03);
+	--padding: .6rem 1rem;
+	--text-color: var(--color-content-text);
+	}
+
+.tablepress thead th {
+	line-height: 1.4;
+	}
+
+/* Fields */
+.dt-container .dt-length {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 5px;
+	justify-content: center;
+	}
+.dt-container input.dt-input[type=search],
+.dt-container select.dt-input {
+	line-height: 2em;
+	min-height: 2em;
+	height: 2em;
+	padding: 0 .5em;
+	}
+
+/* Pagination */
+.dt-container .dt-paging .dt-paging-button.current {
+	font-weight: bold;
+	}
+.dt-container .dt-paging .dt-paging-button.current,
+.dt-container .dt-paging .dt-paging-button:hover {
+	border-color: var(--color-content-border);
+	}
+
+/* Sorting */
+@media screen and (min-width: 1025px) {
+.tablepress thead .dt-orderable-asc .dt-column-order,
+.tablepress thead .dt-orderable-desc .dt-column-order,
+.tablepress thead .dt-ordering-asc .dt-column-order,
+.tablepress thead .dt-ordering-desc .dt-column-order {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	left: auto;
+	right: auto;
+	margin: 0 .4rem;
+	color: inherit;
+	}
+}
